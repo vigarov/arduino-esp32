@@ -144,6 +144,18 @@ public:
 	 * @param [in] param A reference to esp_ble_gatts_cb_param_t.
 	 */
 	virtual void onMtuChanged(BLEServer* pServer, esp_ble_gatts_cb_param_t* param);
+
+	/**
+	 * @brief Handle a write to a Characteristic
+	 * 
+	 * @param [in] pServer A reference to the %BLE server that received the client connection.
+	 * @param [in] param A reference to esp_ble_gatts_cb_param_t.
+	 */
+	virtual void onCharacteristicWrite(BLEServer* pServer, esp_ble_gatts_cb_param_t* param);
+
+	//TODO: add callbacks for all? the other possible events  
+
+
 }; // BLEServerCallbacks
 
 

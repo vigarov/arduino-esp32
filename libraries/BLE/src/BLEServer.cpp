@@ -380,6 +380,12 @@ void BLEServerCallbacks::onMtuChanged(BLEServer* pServer, esp_ble_gatts_cb_param
 	log_d("BLEServerCallbacks", "<< onMtuChanged()");
 } // onMtuChanged
 
+void BLEServerCallbacks::onCharacteristicWrite(BLEServer* pServer, esp_ble_gatts_cb_param_t* param){
+	log_d("BLEServerCallbacks", ">> onCharacteristicWrite(): Default");
+	log_d("BLEServerCallbacks", "Device: %s characteristic handle: %hX", BLEDevice::toString().c_str(), param->write.handle);
+	log_d("BLEServerCallbacks", "<< onCharacteristicWrite()");
+} // onCharecteristicWrite
+
 /* multi connect support */
 /* TODO do some more tweaks */
 void BLEServer::updatePeerMTU(uint16_t conn_id, uint16_t mtu) {
