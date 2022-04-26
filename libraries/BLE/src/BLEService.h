@@ -56,6 +56,7 @@ public:
 	void			   executeDelete();
 	BLECharacteristic* getCharacteristic(const char* uuid);
 	BLECharacteristic* getCharacteristic(BLEUUID uuid);
+	BLECharacteristic* getCharacteristic(uint16_t handle);
 	BLEUUID            getUUID();
 	BLEServer*         getServer();
 	void               start();

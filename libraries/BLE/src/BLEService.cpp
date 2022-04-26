@@ -372,6 +372,10 @@ BLECharacteristic* BLEService::getCharacteristic(BLEUUID uuid) {
 	return m_characteristicMap.getByUUID(uuid);
 }
 
+BLECharacteristic* BLEService::getCharacteristic(uint16_t handle) {
+	return m_characteristicMap.getByHandle(handle);
+}
+
 
 /**
  * @brief Return a string representation of this service.
