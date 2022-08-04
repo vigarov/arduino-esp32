@@ -164,7 +164,53 @@ set(BLE_SRCS
   libraries/BLE/src/GeneralUtils.cpp
   )
 
+
+set(DISPLAY_LIBS
+   libraries/SparkFun_HyperDisplay/src
+   libraries/SparkFun_HyperDisplay_SSD1309/src
+   libraries/SparkFun_HyperDisplay_Transparent_Graphical_OLED/src
+ )
+
+ 
+set(DISPLAY_SRCS
+  libraries/SparkFun_HyperDisplay/src/hyperdisplay.cpp
+  libraries/SparkFun_HyperDisplay_SSD1309/src/HyperDisplay_SSD1309.cpp
+  libraries/SparkFun_HyperDisplay_Transparent_Graphical_OLED/src/HyperDisplay_UG2856KLBAG01.cpp
+)
+
+set(BLE_LIBS
+  libraries/BLE/src
+)
+
+set(ADAFRUIT_LIBS
+  libraries/Adafruit_BusIO
+  libraries/Adafruit_GFX_Library
+  libraries/Adafruit_MPU6050
+  libraries/Adafruit_SSD1306
+  libraries/Adafruit_Unified_Sensor
+)
+
+set(ADAFRUIT_SRCS
+libraries/Adafruit_BusIO/Adafruit_BusIO_Register.cpp
+libraries/Adafruit_BusIO/Adafruit_I2CDevice.cpp
+libraries/Adafruit_BusIO/Adafruit_SPIDevice.cpp
+
+libraries/Adafruit_GFX_Library/Adafruit_GFX.cpp
+libraries/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp
+libraries/Adafruit_GFX_Library/Adafruit_SPITFT.cpp
+libraries/Adafruit_GFX_Library/glcdfont.c
+
+libraries/Adafruit_MPU6050/Adafruit_MPU6050.cpp
+
+libraries/Adafruit_SSD1306/Adafruit_SSD1306.cpp
+
+libraries/Adafruit_Unified_Sensor/Adafruit_Sensor.cpp
+
+)
+
 set(includedirs
+  tools/sdk/esp32/include/
+  tools/sdk/esp32/include/esp_eth/include
   variants/${IDF_TARGET}/
   cores/esp32/
   libraries/ArduinoOTA/src
@@ -198,9 +244,12 @@ set(includedirs
   libraries/WiFi/src
   libraries/WiFiProv/src
   libraries/Wire/src
+  ${BLE_LIBS}
+  ${DISPLAY_LIBS}
+  ${ADAFRUIT_LIBS}
   )
 
-set(srcs ${CORE_SRCS} ${LIBRARY_SRCS} ${BLE_SRCS})
+set(srcs ${CORE_SRCS} ${LIBRARY_SRCS} ${BLE_SRCS} ${DISPLAY_SRCS} ${ADAFRUIT_SRCS})
 set(priv_includes cores/esp32/libb64)
 set(requires spi_flash mbedtls mdns esp_adc_cal wifi_provisioning nghttp wpa_supplicant)
 set(priv_requires fatfs nvs_flash app_update spiffs bootloader_support openssl bt esp_ipc esp_hid)
